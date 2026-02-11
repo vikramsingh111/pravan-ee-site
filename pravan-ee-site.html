@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pravan Group | Electrical Installation & Consultancy</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+    <nav>
+      <img src="Logo.png" alt="" width="66" height="66" class="logo"/>
+        <ul>
+          <li><a href="#work">Work</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- ================= HERO / WORK ================= -->
+
+
+
+<section id="work" class="section hero">
+
+    <!-- SLIDER BACKGROUND -->
+    <div class="hero-slider">
+        <img src="slide1.jpg" class="active" alt="Electrical Installation">
+        <img src="slide2.jpg" alt="Industrial Electrical Work">
+        <img src="slide3.jpg" alt="Electrical Consultancy">
+    </div>
+
+    <!-- HERO LAYOUT -->
+    <div class="hero-layout">
+
+        <!-- LEFT 50% TEXT -->
+        <div class="hero-text">
+            <h1>Electrical Installation & Consultancy Services</h1>
+            <p>
+                Safe, reliable, and standards-compliant electrical solutions
+                for industrial and commercial projects.
+            </p>
+            <a href="#contact" class="btn">Get a Free Consultation</a>
+        </div>
+
+        <!-- RIGHT 50% (EMPTY / OPTIONAL) -->
+        <div class="hero-right"></div>
+
+    </div>
+
+    <!-- SHAPES -->
+
+    <div class="shape shape2"></div>
+
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="section services">
+    <h2>Our Core Services</h2>
+    <p class="section-intro">
+        End-to-end electrical engineering services designed for reliability,
+        safety, and long-term performance.
+    </p>
+
+    <div class="cards">
+        <div class="card">
+            ⚡
+            <h3>HT & LT Electrical Installation</h3>
+            <p>
+                Complete installation of substations, panels, cabling,
+                earthing, and power distribution systems.
+            </p>
+        </div>
+
+        <div class="card">
+            🏭
+            <h3>Industrial & Commercial Wiring</h3>
+            <p>
+                Electrical works for factories, warehouses, offices,
+                malls, and infrastructure facilities.
+            </p>
+        </div>
+
+        <div class="card">
+            📐
+            <h3>Electrical Consultancy</h3>
+            <p>
+                Load calculations, system design, BOQ preparation,
+                drawings, and technical advisory.
+            </p>
+        </div>
+
+        <div class="card">
+            🔍
+            <h3>Testing & Commissioning</h3>
+            <p>
+                Insulation testing, earth resistance testing,
+                protection checks, and system commissioning.
+            </p>
+        </div>
+
+        <div class="card">
+            ☀️
+            <h3>Solar & Energy Solutions</h3>
+            <p>
+                On-grid solar systems, energy efficiency analysis,
+                and optimization solutions.
+            </p>
+        </div>
+
+        <div class="card">
+            🛡️
+            <h3>Safety & Compliance</h3>
+            <p>
+                Electrical safety audits, statutory compliance,
+                and adherence to IS standards.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- ================= ABOUT ================= -->
+<section id="about" class="section about">
+    <h2>Why Choose Pravan Group?</h2>
+
+    <p class="section-intro">
+        Pravan Group is a professional electrical installation and
+        consultancy service provider committed to quality, safety,
+        and engineering excellence.
+    </p>
+
+    <div class="cards">
+        <div class="card">✔ Experienced Engineering Team</div>
+        <div class="card">✔ Safety-First Work Culture</div>
+        <div class="card">✔ IS Standards & Best Practices</div>
+        <div class="card">✔ Industrial & Infrastructure Expertise</div>
+    </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="section contact">
+    <h2>Let’s Discuss Your Project</h2>
+
+    <p class="section-intro">
+        Whether you need installation support, consultancy,
+        or technical guidance, our team is ready to assist you.
+    </p>
+
+    <div class="contact-box">
+        <p><strong>General Enquiry:</strong> info@pravangroup.com</p>
+        <p><strong>Contact:</strong> 7982293028</p>
+        <p><strong>Address:</strong> J.D Nagar Phase-1, Akktha, Pahariya Varanasi</p>
+    </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+    <p>© 2026 Pravan Group. All Rights Reserved.</p>
+</footer>
+<script>
+const slides = document.querySelectorAll(".hero-slider img");
+let currentSlide = 0;
+
+setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+}, 4000);
+</script>
+</body>
+</html>
