@@ -11,9 +11,9 @@
 <!-- ================= HEADER ================= -->
 <header>
     <nav>
-        <div class="logo">PRAVAN GROUP</div>
+      <img src="Logo.png" alt="" width="66" height="66" class="logo"/>
         <ul>
-            <li><a href="#work">Work</a></li>
+          <li><a href="#work">Work</a></li>
             <li><a href="#services">Services</a></li>
             <li><a href="#about">About</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -22,19 +22,40 @@
 </header>
 
 <!-- ================= HERO / WORK ================= -->
+
+
+
 <section id="work" class="section hero">
-    <div class="hero-content">
-        <h1>Electrical Installation & Consultancy Services</h1>
-        <p>
-            We deliver safe, efficient, and standards-compliant electrical
-            solutions for industrial, commercial, and infrastructure projects.
-        </p>
-        <a href="#contact" class="btn">Get a Free Consultation</a>
+
+    <!-- SLIDER BACKGROUND -->
+    <div class="hero-slider">
+        <img src="images/slide1.jpg" class="active" alt="Electrical Installation">
+        <img src="images/slide2.jpg" alt="Industrial Electrical Work">
+        <img src="images/slide3.jpg" alt="Electrical Consultancy">
     </div>
 
-    <!-- Decorative shapes -->
-    <div class="shape shape1"></div>
+    <!-- HERO LAYOUT -->
+    <div class="hero-layout">
+
+        <!-- LEFT 50% TEXT -->
+        <div class="hero-text">
+            <h1>Electrical Installation & Consultancy Services</h1>
+            <p>
+                Safe, reliable, and standards-compliant electrical solutions
+                for industrial and commercial projects.
+            </p>
+            <a href="#contact" class="btn">Get a Free Consultation</a>
+        </div>
+
+        <!-- RIGHT 50% (EMPTY / OPTIONAL) -->
+        <div class="hero-right"></div>
+
+    </div>
+
+    <!-- SHAPES -->
+
     <div class="shape shape2"></div>
+
 </section>
 
 <!-- ================= SERVICES ================= -->
@@ -140,6 +161,15 @@
 <footer>
     <p>© 2026 Pravan Group. All Rights Reserved.</p>
 </footer>
+<script>
+const slides = document.querySelectorAll(".hero-slider img");
+let currentSlide = 0;
 
+setInterval(() => {
+    slides[currentSlide].classList.remove("active");
+    currentSlide = (currentSlide + 1) % slides.length;
+    slides[currentSlide].classList.add("active");
+}, 4000);
+</script>
 </body>
 </html>
