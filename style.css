@@ -84,34 +84,6 @@ nav ul li a:hover {
     opacity: 0.9;
 }
 
-/* ================= HERO ================= */
-.hero {
-    background: linear-gradient(120deg, #b7b3f2, #9aa5ff);
-    position: relative;
-    overflow: hidden;
-}
-
-.hero-content {
-    max-width: 800px;
-    margin: 0px;
-    position: relative;
-    z-index: 2;
-	margin-left: 0px;
-	padding-left: 0px;
-	text-align: center;
-}
-
-.hero h1 {
-    font-size: 46px;
-    margin-bottom: 25px;
-	
-}
-
-.hero p {
-    font-size: 19px;
-    margin-bottom: 35px;
-}
-
 /* CTA Button */
 .btn {
     display: inline-block;
@@ -396,4 +368,5 @@ footer {
     35% { opacity: 0; }
     100% { opacity: 0; }
 }
+
 
