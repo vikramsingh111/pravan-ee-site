@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solar Installation | Pravan Group</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+<section class="image-slider">
+  <div class="slider-container">
+    <div class="slide active">
+      <img src="../images/Solar-01.jpeg" alt="Solar Installation">
+    </div>
+
+    <div class="slide">
+      <img src="../images/Solar-02.jpeg" alt="Solar Installation">
+    </div>
+
+    <div class="slide">
+      <img src="../images/Solar-03.jpeg" alt="Solar Installation">
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="slider-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const dots = document.querySelectorAll(".dot");
+
+let current = 0;
+
+function showSlide(index) {
+  slides.forEach(slide => slide.classList.remove("active"));
+  dots.forEach(dot => dot.classList.remove("active"));
+
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+}
+
+function nextSlide() {
+  current = (current + 1) % slides.length;
+  showSlide(current);
+}
+
+setInterval(nextSlide, 4000);
+
+// Dot Click
+dots.forEach((dot, index) => {
+  dot.addEventListener("click", () => {
+    current = index;
+    showSlide(current);
+  });
+});
+</script>
+
+</body>
+</html>
