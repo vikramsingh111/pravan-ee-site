@@ -1,61 +1,84 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Electrical Consultancy | Pravan Group</title>
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrical Consultancy | Pravan Group</title>
+  <meta name="description" content="Electrical consultancy for load study, design review, compliance support, and reliability improvement.">
+  <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-
-<header>
-  <nav>
-    <div class="logo">
-      <img src="../Logo.png" alt="Pravan Group" width="50" style="border-radius: 30%;">
-    </div>
-
-        <ul class="menu">
-            <li><a href="../index.html">Home</a></li>
-
-            <li class="dropdown">
-            <a href="#">Services ▾</a>
-            <ul class="dropdown-menu">
-                <li><a href="../services/ht-lt.html">HT & LT Installation</a></li>
-                <li><a href="../services/solar.html">Solar Installation</a></li>
-                <li><a href="../services/consultancy.html">Electrical Consultancy</a></li>
-            </ul>
-            </li>
-
-            <li><a href="../about.html">About</a></li>
-            <li><a href="../contact.html">Contact</a></li>
-        </ul>
+  <header>
+    <nav class="navigation">
+      <div class="logo"><img src="../Logo.png" alt="Pravan Group logo"></div>
+      <ul class="menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="../services/ht-lt.html">HT and LT Installation</a></li>
+            <li><a href="../services/industrial-wiring.html">Industrial Wiring</a></li>
+            <li><a href="../services/testing.html">Testing and Commissioning</a></li>
+            <li><a href="../services/safety.html">Safety and Audit</a></li>
+            <li><a href="../services/solar.html">Solar Installation</a></li>
+            <li><a href="../services/consultancy.html">Electrical Consultancy</a></li>
+          </ul>
+        </li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-<section class="page-hero consultancy">
-  <div class="container">
-    <h1>Electrical Consultancy</h1>
-    <p>Design, Load Analysis & Compliance Solutions.</p>
-  </div>
-</section>
-
-<section class="section consultancy">
-  <div class="container cards">
-    <div class="card">
-      <h3>Load Analysis</h3>
-      <p>Detailed electrical load planning and design.</p>
+  <section class="page-hero consultancy">
+    <div class="container reveal">
+      <h1>Electrical Consultancy Services</h1>
+      <p>Actionable technical advice for design decisions, compliance needs, and operational reliability.</p>
     </div>
-    <div class="card">
-      <h3>Compliance Support</h3>
-      <p>Safety audit and statutory compliance assistance.</p>
+  </section>
+
+  <section class="section consultancy">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Consultancy Areas</h2>
+        <p>Our advisory services help clients make informed electrical decisions before execution and during operations.</p>
+      </div>
+      <div class="cards three-col stagger-grid">
+        <article class="card feature-text reveal" style="--i:1"><h3>Load Assessment</h3><p>Connected load study, demand profiling, and recommendations for distribution balance.</p></article>
+        <article class="card feature-text reveal" style="--i:2"><h3>Design and BOQ Review</h3><p>Review of electrical scheme, cable sizing logic, and practical suitability of specifications.</p></article>
+        <article class="card feature-text reveal" style="--i:3"><h3>Compliance Assistance</h3><p>Support for safer designs, documentation structure, and audit-ready implementation planning.</p></article>
+      </div>
+
+      <div class="split-grid">
+        <div class="card feature-text reveal">
+          <h3>Typical Consultancy Deliverables</h3>
+          <ul class="timeline">
+            <li><strong>Technical note:</strong> current condition and priority issues</li>
+            <li><strong>Improvement roadmap:</strong> phased actions for reliability and safety</li>
+            <li><strong>Cost guidance:</strong> practical budget range by scope</li>
+            <li><strong>Execution support:</strong> clarifications during implementation stage</li>
+          </ul>
+        </div>
+
+        <aside class="info-panel reveal">
+          <h3>When Consultancy Helps Most</h3>
+          <ul>
+            <li>Before expansion or major upgrade</li>
+            <li>When recurring electrical faults exist</li>
+            <li>During vendor and scope evaluation</li>
+            <li>Before safety and statutory reviews</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="cta-strip reveal">
+        <h3>Need expert review before execution starts?</h3>
+        <a href="../contact.html" class="btn">Book Consultancy Call</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<footer>
-  © 2026 Pravan Group. All Rights Reserved.
-</footer>
-
+  <footer>&copy; 2026 Pravan Group. All Rights Reserved.</footer>
+  <script src="../script.js" defer></script>
 </body>
 </html>
