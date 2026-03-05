@@ -1,65 +1,83 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Solar Installation | Pravan Group</title>
-<link rel="stylesheet" href="../style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Safety and Audit | Pravan Group</title>
+  <meta name="description" content="Electrical safety audit and compliance support including earthing review, risk assessment, and corrective recommendations.">
+  <link rel="stylesheet" href="../style.css">
 </head>
-
 <body>
-<section class="image-slider">
-  <div class="slider-container">
-    <div class="slide active">
-      <img src="../images/Solar-01.jpeg" alt="Solar Installation">
+  <header>
+    <nav class="navigation">
+      <div class="logo"><img src="../Logo.png" alt="Pravan Group logo"></div>
+      <ul class="menu">
+        <li><a href="../index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Services</a>
+          <ul class="dropdown-menu">
+            <li><a href="../services/ht-lt.html">HT and LT Installation</a></li>
+            <li><a href="../services/industrial-wiring.html">Industrial Wiring</a></li>
+            <li><a href="../services/testing.html">Testing and Commissioning</a></li>
+            <li><a href="../services/safety.html">Safety and Audit</a></li>
+            <li><a href="../services/solar.html">Solar Installation</a></li>
+            <li><a href="../services/consultancy.html">Electrical Consultancy</a></li>
+          </ul>
+        </li>
+        <li><a href="../about.html">About</a></li>
+        <li><a href="../contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="page-hero">
+    <div class="container reveal">
+      <h1>Electrical Safety and Audit Services</h1>
+      <p>Focused safety review for electrical installations with practical improvement recommendations.</p>
     </div>
+  </section>
 
-    <div class="slide">
-      <img src="../images/Solar-02.jpeg" alt="Solar Installation">
+  <section class="section">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>Audit Coverage</h2>
+      </div>
+      <div class="cards three-col stagger-grid">
+        <article class="card feature-text reveal" style="--i:1"><h3>Installation Safety Review</h3><p>Assessment of panel areas, cable routing, termination condition, and housekeeping aspects.</p></article>
+        <article class="card feature-text reveal" style="--i:2"><h3>Earthing and Bonding Checks</h3><p>Review of grounding arrangements and continuity to strengthen fault protection readiness.</p></article>
+        <article class="card feature-text reveal" style="--i:3"><h3>Risk and Corrective Matrix</h3><p>Prioritized findings with actionable recommendations and implementation stages.</p></article>
+      </div>
+
+      <div class="split-grid">
+        <div class="card feature-text reveal">
+          <h3>Common Observations We Address</h3>
+          <ul class="timeline">
+            <li><strong>Unsafe termination practice</strong> and missing identification</li>
+            <li><strong>Improper cable protection</strong> in high-traffic utility areas</li>
+            <li><strong>Weak documentation</strong> for maintenance and inspection references</li>
+            <li><strong>Delayed corrective actions</strong> on recurring electrical issues</li>
+          </ul>
+        </div>
+
+        <aside class="info-panel reveal">
+          <h3>Audit Deliverables</h3>
+          <ul>
+            <li>Condition summary by area</li>
+            <li>Risk ranking with severity</li>
+            <li>Corrective action roadmap</li>
+            <li>Follow-up review support</li>
+          </ul>
+        </aside>
+      </div>
+
+      <div class="cta-strip reveal">
+        <h3>Need a structured electrical safety review for your site?</h3>
+        <a href="../contact.html" class="btn">Request Safety Audit</a>
+      </div>
     </div>
+  </section>
 
-    <div class="slide">
-      <img src="../images/Solar-03.jpeg" alt="Solar Installation">
-    </div>
-
-    <!-- Navigation Dots -->
-    <div class="slider-dots">
-      <span class="dot active"></span>
-      <span class="dot"></span>
-      <span class="dot"></span>
-    </div>
-  </div>
-</section>
-
-<script>
-const slides = document.querySelectorAll(".slide");
-const dots = document.querySelectorAll(".dot");
-
-let current = 0;
-
-function showSlide(index) {
-  slides.forEach(slide => slide.classList.remove("active"));
-  dots.forEach(dot => dot.classList.remove("active"));
-
-  slides[index].classList.add("active");
-  dots[index].classList.add("active");
-}
-
-function nextSlide() {
-  current = (current + 1) % slides.length;
-  showSlide(current);
-}
-
-setInterval(nextSlide, 4000);
-
-// Dot Click
-dots.forEach((dot, index) => {
-  dot.addEventListener("click", () => {
-    current = index;
-    showSlide(current);
-  });
-});
-</script>
-
+  <footer>&copy; 2026 Pravan Group. All Rights Reserved.</footer>
+  <script src="../script.js" defer></script>
 </body>
 </html>
