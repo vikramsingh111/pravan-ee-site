@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -195,6 +195,37 @@
   <section class="section section-gray">
     <div class="container">
       <div class="section-head reveal">
+        <h2>Solar System Size Calculator</h2>
+        <p>Enter your monthly electricity use to estimate the solar capacity needed for good and poor weather conditions.</p>
+      </div>
+      <div class="solar-calculator-grid stagger-grid" id="solar-size-calculator">
+        <div class="calculator card reveal" style="--i:1">
+          <h3>Enter Your Usage</h3>
+          <div class="calculator-box">
+            <span class="calculator-label">Select system type</span>
+            <div class="solar-system-options" role="radiogroup" aria-label="Solar system type">
+              <label><input type="radio" name="solarSystem" value="on-grid" checked> On-grid</label>
+              <label><input type="radio" name="solarSystem" value="off-grid"> Off-grid</label>
+            </div>
+            <label for="monthlyUnitsInput">Monthly electricity consumption</label>
+            <div class="solar-unit-value"><output id="monthlyUnitsValue" for="monthlyUnitsInput">500</output> units / month</div>
+            <input type="range" id="monthlyUnitsInput" min="0" max="10000" value="500" step="10" aria-describedby="monthlyUnitsValue">
+            <div class="solar-slider-scale" aria-hidden="true"><span>0</span><span>5,000</span><span>10,000 units</span></div>
+            <button class="btn" type="button" onclick="calculateSolarSize()">Calculate Required kW</button>
+          </div>
+        </div>
+        <div class="solar-result-panel reveal" style="--i:2">
+          <h3>Your Solar Capacity Estimate</h3>
+          <p id="solarSizeResult" aria-live="polite">Enter your monthly usage and select "Calculate Required kW" to see your result.</p>
+          <p class="required-kw" id="requiredKwResult" aria-live="polite"></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-gray">
+    <div class="container">
+      <div class="section-head reveal">
         <h2>System Comparison</h2>
         <p>Choose an approximate size according to available area and expected energy generation.</p>
       </div>
@@ -340,6 +371,44 @@
       document.getElementById("emiResult").innerText =
         "Estimated EMI: INR " + Math.round(emi).toLocaleString("en-IN");
     }
+
+    function calculateSolarSize() {
+      const monthlyUnits = parseFloat(document.getElementById("monthlyUnitsInput").value);
+      const result = document.getElementById("solarSizeResult");
+
+      if (!Number.isFinite(monthlyUnits) || monthlyUnits <= 0) {
+        result.innerText = "Please enter a valid monthly electricity consumption.";
+        document.getElementById("requiredKwResult").innerText = "";
+        return;
+      }
+
+      const systemType = document.querySelector('input[name="solarSystem"]:checked').value;
+      const daysInMonth = 30;
+      const goodWeatherKw = monthlyUnits / (5 * daysInMonth);
+      const poorWeatherKw = monthlyUnits / (4 * daysInMonth);
+      const offGridKw = poorWeatherKw / 0.75;
+      const recommendedKw = systemType === "off-grid" ? Math.ceil(offGridKw) : Math.ceil(poorWeatherKw);
+
+      if (systemType === "off-grid") {
+        result.innerText =
+          "Off-grid estimate: " + offGridKw.toFixed(2) + " kW after allowing 25% for inverter, battery, and system losses. " +
+          "Confirm peak load and required battery backup hours before finalizing the system.";
+      } else {
+        result.innerText =
+          "On-grid estimate: " + goodWeatherKw.toFixed(2) + " kW in good weather, " +
+          poorWeatherKw.toFixed(2) + " kW in poor weather. For year-round coverage, consider a " +
+          recommendedKw.toFixed(1) + " kW system.";
+      }
+      document.getElementById("requiredKwResult").innerText =
+        "Required kW = " + recommendedKw + " kW";
+    }
+
+    const monthlyUnitsInput = document.getElementById("monthlyUnitsInput");
+    const monthlyUnitsValue = document.getElementById("monthlyUnitsValue");
+
+    monthlyUnitsInput.addEventListener("input", () => {
+      monthlyUnitsValue.innerText = Number(monthlyUnitsInput.value).toLocaleString("en-IN");
+    });
 
     const slides = document.querySelectorAll(".slide");
     const dots = document.querySelectorAll(".dot");
