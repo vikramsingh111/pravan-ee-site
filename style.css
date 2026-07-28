@@ -739,6 +739,46 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   background: var(--surface);
 }
 
+.solar-calculator-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.2rem;
+  align-items: stretch;
+  margin-bottom: 2rem;
+}
+
+.solar-result-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: linear-gradient(135deg, #0b4f77, #1173a8);
+  color: #fff;
+  border-radius: var(--radius-md);
+  padding: 2rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.solar-result-panel h3 {
+  color: #fff !important;
+  margin-bottom: 0.75rem;
+}
+
+.solar-result-panel p {
+  color: #e8f5ff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.65;
+}
+
+.solar-result-panel .required-kw {
+  margin-top: 0.7rem;
+  color: #fff;
+  font-family: "Sora", sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
 .calculator-box {
   max-width: 560px;
   margin: 0 auto;
@@ -753,11 +793,66 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   color: #143454;
 }
 
-.calculator-box input {
+.calculator-box input:not([type="range"]):not([type="radio"]) {
   border: 1px solid var(--border);
   border-radius: 10px;
   padding: 0.65rem 0.8rem;
   font: inherit;
+}
+
+.calculator-box input[type="range"] {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  accent-color: var(--primary-2);
+  cursor: pointer;
+}
+
+.solar-unit-value {
+  color: var(--primary);
+  font-family: "Sora", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+}
+
+.calculator-label {
+  color: #143454;
+  font-weight: 600;
+}
+
+.solar-system-options {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.solar-system-options label {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.65rem 0.75rem;
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.solar-system-options input {
+  accent-color: var(--primary-2);
+}
+
+.solar-unit-value output {
+  color: #f97316;
+}
+
+.solar-slider-scale {
+  display: flex;
+  justify-content: space-between;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  margin-top: -0.25rem;
 }
 
 .calculator-box p {
@@ -1025,7 +1120,8 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 
   .cards,
   .cards.three-col,
-  .cards.two-col {
+  .cards.two-col,
+  .solar-calculator-grid {
     grid-template-columns: 1fr;
   }
 
