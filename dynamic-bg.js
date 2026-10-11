@@ -28,13 +28,13 @@ const colorSchemes = {
     bgDark: '#2e1065'
   },
   'products': {
-    name: 'Coral Reef',
-    primaryGradient1: 'circle at 85% 15%, #fed7aa 0%, transparent 38%',
-    primaryGradient2: 'circle at 15% 85%, #c7d2fe 0%, transparent 32%',
-    primaryColor: '#dc2626',
-    accentColor: '#0891b2',
-    bgLight: '#fff7ed',
-    bgDark: '#7c2d12'
+    name: 'Solar Yellow',
+    primaryGradient1: 'circle at 85% 15%, #fef08a 0%, transparent 38%',
+    primaryGradient2: 'circle at 15% 85%, #fef9c3 0%, transparent 32%',
+    primaryColor: '#efc900',
+    accentColor: '#d97706',
+    bgLight: '#fffbeb',
+    bgDark: '#451a03'
   },
   'tata': {
     name: 'Indigo Night',
