@@ -25,10 +25,11 @@
 
 .brand-container {
   display: flex;
-  align-items: center; /* Centers the text vertically relative to the logo */
+  align-items: center;
+  gap: 18px;
+  text-decoration: none;
 }
 
-/* Circular Logo Container with Dynamic Color Changing Border */
 /* Circular Logo Container with Dynamic Color Changing Border */
 .logo {
   display: flex;
@@ -36,20 +37,20 @@
   justify-content: center;
   width: 65px;
   height: 65px;
-  border-radius: 10%; /* Forms a perfect circle */
-  /*background: #1e3247;*/ /* Matches the dark background of your PG logo asset */
-  border: 7px solid var(--primary); /* Binds border color to page theme variables */
-  padding: 0; /* Strips padding so the dark background scales cleanly */
-  box-shadow: var(--shadow-sm); /* Retains consistent header shadow properties[cite: 8] */
-  transition: border-color 0.6s ease, transform 0.3s ease; /* Smooth visual morphing timelines[cite: 8] */
+  border-radius: 10%;
+  border: 7px solid var(--primary);
+  background-color: var(--primary);
+  padding: 0;
+  box-shadow: var(--shadow-sm);
+  transition: border-color 0.6s ease, background-color 0.6s ease, transform 0.3s ease;
   overflow: hidden;
-  background-color: var(--primary);;
+  flex-shrink: 0;
 }
 
 .logo img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Instructs the image to zoom slightly and fill out the full circle area */
+  object-fit: cover;
   border-radius: 10%;
   border: none;
 }
@@ -60,13 +61,44 @@
   border-color: var(--primary-2);
 }
 
+.brand-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .companyName {
-  font-family: "Source", Exotc350 Bd BT;
+  font-family: "Sora", "Source", Exotc350 Bd BT, sans-serif;
   font-weight: 800;
-  font-size: 50px; /* Keep your size, or scale down slightly if it feels too massive next to the 80px logo */
+  font-size: clamp(1.9rem, 3.4vw, 40px);
+  line-height: 1.05;
   color: var(--primary);
-  margin-left: 20px; /* Adds clean spacing to the right of the logo */
-  padding-left: 0%;
+  transition: color 0.6s ease;
+  letter-spacing: -0.02em;
+  margin: 0;
+  padding: 0;
+}
+
+.brand-tagline {
+  font-family: "Manrope", sans-serif;
+  font-size: clamp(0.72rem, 1vw, 0.8rem);
+  font-weight: 700;
+  color: var(--primary-2);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 3px;
+  line-height: 1.2;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  transition: color 0.6s ease;
+}
+
+.brand-tagline .tag-bullet {
+  color: var(--accent);
+  font-size: 0.8rem;
+  line-height: 1;
+  transition: color 0.6s ease;
 }
 
 * {
@@ -138,7 +170,7 @@ header {
 nav {
   max-width: var(--container);
   margin: 0 auto;
-  padding: 0.5rem 1rem;
+  padding: 1.25rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -152,56 +184,115 @@ nav {
 
 .menu {
   list-style: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 1.4rem;
+  gap: 0.35rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.35rem 0.55rem;
+  box-shadow: 0 4px 18px rgba(16, 40, 72, 0.08);
 }
 
-.menu a {
+.menu > li {
+  position: relative;
+  list-style: none;
+}
+
+.menu > li > a {
   text-decoration: none;
   font-weight: 600;
+  font-size: 0.95rem;
   color: #0e2a47;
-  transition: color 0.2s ease, opacity 0.2s ease;
+  padding: 0.5rem 1.15rem;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.3;
+  transition: all 0.25s ease;
+  white-space: nowrap;
 }
 
-.menu a:hover {
-  color: var(--primary-2);
+.menu > li > a:hover {
+  color: var(--primary);
+  background: var(--surface-alt);
+}
+
+/* Active navigation tab highlight */
+body[data-page="home"] .menu > li > a[href*="index.html"],
+body[data-page="about"] .menu > li > a[href*="about.html"],
+body[data-page="contact"] .menu > li > a[href*="contact.html"],
+body:is([data-page="ht-lt"], [data-page="industrial-wiring"], [data-page="testing"], [data-page="safety"], [data-page="solar"], [data-page="consultancy"]) .menu > li.dropdown > a {
+  background: var(--primary);
+  color: #ffffff;
+}
+
+body[data-page="products"] .menu > li > a[href*="products.html"] {
+  background: #efc900;
+  color: #111827;
+  font-weight: 700;
+}
+
+body[data-page="home"] .menu > li > a[href*="index.html"]:hover,
+body[data-page="about"] .menu > li > a[href*="about.html"]:hover,
+body[data-page="contact"] .menu > li > a[href*="contact.html"]:hover,
+body:is([data-page="ht-lt"], [data-page="industrial-wiring"], [data-page="testing"], [data-page="safety"], [data-page="solar"], [data-page="consultancy"]) .menu > li.dropdown > a:hover {
+  background: var(--primary-2);
+  color: #ffffff;
+}
+
+body[data-page="products"] .menu > li > a[href*="products.html"]:hover {
+  background: #e5b800;
+  color: #111827;
 }
 
 .dropdown {
   position: relative;
-  padding-bottom: 0.55rem;
-  margin-bottom: -0.55rem;
 }
 
 .dropdown-menu {
   position: absolute;
-  top: 100%;
+  top: calc(100% + 8px);
   left: 0;
   min-width: 240px;
   list-style: none;
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-sm);
+  box-shadow: var(--shadow-lg);
   padding: 0.5rem;
   display: none;
+  z-index: 1001;
+}
+
+/* Invisible bridge to prevent dropdown from closing during hover */
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  right: 0;
+  height: 10px;
 }
 
 .dropdown-menu li a {
   display: block;
-  padding: 0.55rem 0.7rem;
+  padding: 0.55rem 0.8rem;
   border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.92rem;
+  color: #0e2a47;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .dropdown-menu li a:hover {
   background: var(--surface-alt);
+  color: var(--primary);
 }
 
-.dropdown:hover .dropdown-menu {
-  display: block;
-}
-
+.dropdown:hover .dropdown-menu,
 .dropdown:focus-within .dropdown-menu {
   display: block;
 }
@@ -218,24 +309,35 @@ nav {
 .hero-home h1,
 .page-hero h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .hero-home {
   background:
-    repeating-radial-gradient(circle at 0 0, transparent 0, rgba(255,255,255,0.05) 50px),
-    repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,0.02) 2px, rgba(255,255,255,0.02) 4px),
-    linear-gradient(135deg, rgba(8, 34, 64, 0.95), rgba(20, 105, 162, 0.9));
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #0284c7 0%, #0369a1 40%, #082f49 100%);
   background-size:
-    400px 400px,
+    100% 100%,
+    100% 100%,
     100% 100%,
     100% 100%;
 }
 
 .page-hero {
-  background: linear-gradient(135deg, rgba(8, 34, 64, 0.95), rgba(29, 66, 118, 0.9));
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #0284c7 0%, #0369a1 40%, #082f49 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
 }
 
 .hero-home .container,
@@ -508,7 +610,7 @@ button.btn:hover {
   color: var(--text);
 }
 
-footer {
+footer:not(.site-footer) {
   margin-top: 2rem;
   padding: 1.1rem;
   text-align: center;
@@ -861,30 +963,29 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 }
 
 .page-hero.htlt {
-  background: 
-    repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
-    repeating-linear-gradient(-45deg, transparent, transparent 2px, rgba(255,255,255,0.03) 2px, rgba(255,255,255,0.03) 4px),
-    radial-gradient(circle at 20% 50%, rgba(255,255,255,0.1) 1px, transparent 1px),
-    radial-gradient(circle at 80% 80%, rgba(255,255,255,0.1) 2px, transparent 2px),
-    linear-gradient(135deg, rgba(185, 28, 28, 0.95), rgba(153, 27, 27, 0.9));
-  background-size: 
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #ef4444 0%, #dc2626 50%, #991b1b 100%);
+  background-size:
     100% 100%,
     100% 100%,
-    50px 50px,
-    80px 80px,
+    100% 100%,
     100% 100%;
 }
 
 .page-hero.htlt h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-hero.htlt p {
-  color: rgba(254, 242, 242, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
 }
 
 .section.htlt {
@@ -894,38 +995,39 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 /* Industrial Wiring Page */
 .page-hero.industrial-wiring {
   background:
-    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 11px),
-    repeating-linear-gradient(90deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 11px),
-    repeating-linear-gradient(45deg, rgba(255,255,255,0.01) 0px, transparent 1px, transparent 10px, rgba(255,255,255,0.01) 11px),
-    linear-gradient(135deg, rgba(55, 65, 81, 0.95), rgba(31, 41, 55, 0.9));
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #4b5563 0%, #374151 50%, #111827 100%);
   background-size:
     100% 100%,
     100% 100%,
-    15px 15px,
+    100% 100%,
     100% 100%;
 }
 
 .page-hero.industrial-wiring h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-hero.industrial-wiring p {
-  color: rgba(243, 244, 246, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
 }
 
 /* Testing Page */
 .page-hero.testing {
   background:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 1px),
-    repeating-linear-gradient(0deg, transparent, transparent 3px, rgba(255,255,255,0.03) 3px, rgba(255,255,255,0.03) 6px),
-    repeating-linear-gradient(90deg, transparent, transparent 3px, rgba(255,255,255,0.03) 3px, rgba(255,255,255,0.03) 6px),
-    linear-gradient(135deg, rgba(3, 105, 161, 0.95), rgba(2, 132, 199, 0.9));
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #075985 100%);
   background-size:
-    25px 25px,
+    100% 100%,
     100% 100%,
     100% 100%,
     100% 100%;
@@ -933,113 +1035,160 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 
 .page-hero.testing h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-hero.testing p {
-  color: rgba(240, 249, 255, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
 }
 
 /* Safety Page */
 .page-hero.safety {
-  background: linear-gradient(135deg, rgba(5, 150, 105, 0.95), rgba(4, 120, 87, 0.9));
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #10b981 0%, #059669 50%, #064e3b 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
 }
 
 .page-hero.safety h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-hero.safety p {
-  color: rgba(240, 253, 250, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
 }
 
+/* Consultancy Page */
 .page-hero.consultancy {
   background:
-    repeating-linear-gradient(0deg, transparent, transparent 15px, rgba(255,255,255,0.03) 15px, rgba(255,255,255,0.03) 16px),
-    repeating-linear-gradient(90deg, transparent, transparent 15px, rgba(255,255,255,0.03) 15px, rgba(255,255,255,0.03) 16px),
-    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 21px),
-    repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 21px),
-    linear-gradient(135deg, rgba(0, 61, 130, 0.95), rgba(0, 26, 51, 0.9));
-  background-size:
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%,
-    100% 100%;
-}
-
-.page-hero.products {
-  background:
     repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
-    repeating-linear-gradient(0deg, rgba(255,255,255,0.01), rgba(255,255,255,0.01) 2px, transparent 2px, transparent 6px),
-    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.02) 20px, rgba(255,255,255,0.02) 21px),
-    linear-gradient(135deg, rgba(220, 38, 38, 0.95), rgba(185, 28, 28, 0.9));
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #1e40af 0%, #1e3a8a 50%, #0f172a 100%);
   background-size:
     100% 100%,
     100% 100%,
     100% 100%,
-    100% 100%;
-}
-
-.page-hero.contact {
-  background:
-    radial-gradient(circle at 50% 50%, rgba(255,255,255,0.1) 2px, transparent 2px),
-    radial-gradient(circle at 0% 0%, rgba(255,255,255,0.1) 1px, transparent 1px),
-    radial-gradient(circle at 100% 100%, rgba(255,255,255,0.1) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(147, 51, 234, 0.95), rgba(124, 58, 237, 0.9));
-  background-size:
-    60px 60px,
-    60px 60px,
-    60px 60px,
-    100% 100%;
-  background-position: 0 0, 30px 30px, 0 0, 0 0;
-}
-
-.hero-home.tata {
-  background:
-    repeating-linear-gradient(45deg, transparent, transparent 15px, rgba(255,255,255,0.03) 15px, rgba(255,255,255,0.03) 16px),
-    repeating-linear-gradient(-45deg, transparent, transparent 15px, rgba(255,255,255,0.03) 15px, rgba(255,255,255,0.03) 16px),
-    radial-gradient(circle at 20% 80%, rgba(255,255,255,0.05) 1px, transparent 1px),
-    radial-gradient(circle at 80% 20%, rgba(255,255,255,0.05) 1px, transparent 1px),
-    linear-gradient(135deg, rgba(30, 64, 175, 0.95), rgba(30, 58, 138, 0.9));
-  background-size:
-    100% 100%,
-    100% 100%,
-    80px 80px,
-    80px 80px,
     100% 100%;
 }
 
 .page-hero.consultancy h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-hero.consultancy p {
-  color: rgba(240, 249, 255, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
 }
 
 .section.consultancy {
   background: transparent;
 }
 
+.page-hero.products {
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(0,0,0,0.03) 12px, rgba(0,0,0,0.03) 13px),
+    repeating-linear-gradient(0deg, rgba(0,0,0,0.015), rgba(0,0,0,0.015) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(0,0,0,0.02) 20px, rgba(0,0,0,0.02) 21px),
+    linear-gradient(135deg, #efc900 0%, #f59e0b 60%, #d97706 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+.page-hero.products h1 {
+  color: #111827 !important;
+  font-weight: 800;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.page-hero.products p {
+  color: #1f2937 !important;
+  font-weight: 500;
+  text-shadow: none;
+}
+
+.page-hero.contact {
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #a855f7 0%, #9333ea 50%, #581c87 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+.page-hero.contact h1 {
+  color: #ffffff !important;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.page-hero.contact p {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
+}
+
+.hero-home.tata {
+  background:
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #172554 100%);
+  background-size:
+    100% 100%,
+    100% 100%,
+    100% 100%,
+    100% 100%;
+}
+
+.hero-home.tata h1 {
+  color: #ffffff !important;
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+.hero-home.tata p {
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
+}
+
 /* About Page Styling */
 .page-hero.about {
   background:
-    repeating-linear-gradient(60deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 11px),
-    repeating-linear-gradient(120deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 11px),
-    repeating-linear-gradient(0deg, transparent, transparent 10px, rgba(255,255,255,0.04) 10px, rgba(255,255,255,0.04) 11px),
-    linear-gradient(135deg, rgba(109, 40, 217, 0.95), rgba(91, 33, 182, 0.9));
+    repeating-linear-gradient(90deg, transparent, transparent 12px, rgba(255,255,255,0.04) 12px, rgba(255,255,255,0.04) 13px),
+    repeating-linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02) 2px, transparent 2px, transparent 6px),
+    repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(255,255,255,0.025) 20px, rgba(255,255,255,0.025) 21px),
+    linear-gradient(135deg, #8b5cf6 0%, #6d28d9 50%, #4c1d95 100%);
   background-size:
     100% 100%,
     100% 100%,
@@ -1049,14 +1198,15 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 
 .page-hero.about h1 {
   color: #ffffff !important;
-  font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  font-weight: 800;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
   font-size: clamp(2rem, 5vw, 3.5rem);
 }
 
 .page-hero.about p {
-  color: rgba(243, 232, 255, 0.95);
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.95);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  font-weight: 500;
 }
 
 .section.about {
@@ -1089,8 +1239,14 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 @media (max-width: 768px) {
   nav {
     flex-direction: column;
-    align-items: stretch;
+    align-items: center;
     padding: 0.7rem 1rem;
+    gap: 0.8rem;
+  }
+
+  .brand-container {
+    justify-content: center;
+    text-align: left;
   }
 
   .logo {
@@ -1099,10 +1255,13 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   }
 
   .menu {
-    gap: 1rem;
+    gap: 0.35rem;
     overflow-x: auto;
     justify-content: flex-start;
     scrollbar-width: none;
+    border-radius: 10px;
+    padding: 0.35rem 0.5rem;
+    width: 100%;
   }
 
   .menu::-webkit-scrollbar {
@@ -1112,6 +1271,7 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   .dropdown-menu {
     position: static;
     margin-top: 0.4rem;
+    box-shadow: none;
   }
 
   .hero-home .hero-kpis {
@@ -1507,6 +1667,12 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   gap: 1.2rem;
 }
 
+@media (min-width: 860px) {
+  #structures-earthing-la .product-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
 .product-card {
   position: relative;
   background: var(--surface);
@@ -1543,14 +1709,31 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   height: 140px;
   border-radius: 16px;
   border: 1px solid var(--border);
-  background: linear-gradient(135deg, #e6f3ff, #fff6e3);
-  display: grid;
-  place-items: center;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  color: #0c3454;
-  font-family: "Sora", sans-serif;
-  font-size: 1.1rem;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+  box-shadow: inset 0 2px 6px rgba(16, 40, 72, 0.03);
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover .product-media {
+  border-color: var(--primary-2);
+}
+
+.product-media img {
+  max-width: 82%;
+  max-height: 82%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover .product-media img {
+  transform: scale(1.06);
 }
 
 .product-body h3 {
@@ -1583,7 +1766,7 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   position: absolute;
   left: 0;
   top: 0;
-  color: #ef4444;
+  color: #efc900;
   font-weight: 700;
 }
 
@@ -1604,26 +1787,30 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
   font-size: 0.9rem;
   text-decoration: none;
   border: 1px solid transparent;
-  background: #e11d1d;
-  color: #fff;
-  box-shadow: 0 8px 18px rgba(225, 29, 29, 0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  background: #efc900;
+  color: #111827;
+  box-shadow: 0 6px 16px rgba(239, 201, 0, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
 }
 
 .btn-sm:hover {
   transform: translateY(-2px);
-  box-shadow: 0 12px 24px rgba(225, 29, 29, 0.24);
+  background: #e5b800;
+  color: #111827;
+  box-shadow: 0 10px 22px rgba(239, 201, 0, 0.45);
 }
 
 .btn-sm.btn-outline {
   background: transparent;
-  color: #e11d1d;
-  border-color: #e11d1d;
+  color: #b45309;
+  border: 1.5px solid #efc900;
   box-shadow: none;
 }
 
 .btn-sm.btn-outline:hover {
-  background: rgba(225, 29, 29, 0.08);
+  background: rgba(239, 201, 0, 0.15);
+  color: #92400e;
+  border-color: #d97706;
   box-shadow: none;
 }
 
@@ -1634,5 +1821,187 @@ body[data-page="solar"] .image-slider .slider-text .btn:hover,
 
   .btn-sm {
     width: 100%;
+  }
+}
+
+/* ==========================================================================
+   Site Footer
+   ========================================================================== */
+.site-footer {
+  background: #091e36;
+  color: #dce5f2;
+  padding: 4.5rem 0 2rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-family: "Manrope", sans-serif;
+  text-align: left;
+}
+
+.site-footer .footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1.2fr 1.7fr;
+  gap: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: left;
+}
+
+.site-footer .footer-brand,
+.site-footer .footer-col {
+  text-align: left;
+}
+
+.site-footer .footer-brand h3 {
+  color: #ffffff !important;
+  font-size: 1.65rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  font-family: "Sora", sans-serif;
+  text-align: left;
+  letter-spacing: -0.01em;
+}
+
+.site-footer .footer-brand p {
+  color: #e2e8f0;
+  font-size: 0.96rem;
+  line-height: 1.65;
+  max-width: 320px;
+  text-align: left;
+}
+
+.site-footer h4 {
+  color: #ffffff !important;
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
+  position: relative;
+  font-family: "Sora", sans-serif;
+  text-align: left;
+}
+
+.site-footer h4::after {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 2.5px;
+  background: var(--primary-2);
+  margin-top: 0.45rem;
+  border-radius: 2px;
+}
+
+.site-footer ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: left;
+}
+
+.site-footer ul li {
+  margin-bottom: 0.65rem;
+  text-align: left;
+}
+
+.site-footer ul li a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.94rem;
+  font-weight: 500;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+  display: inline-block;
+  text-align: left;
+}
+
+.site-footer ul li a:hover {
+  color: #ffffff;
+  padding-left: 4px;
+}
+
+.site-footer .footer-contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.site-footer .footer-contact-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+  color: #e2e8f0;
+  font-size: 0.94rem;
+  margin-bottom: 0;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.site-footer .footer-contact-list .icon {
+  font-size: 1.05rem;
+  width: 34px;
+  height: 34px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.site-footer .footer-contact-list div {
+  flex: 1;
+  text-align: left;
+}
+
+.site-footer .footer-contact-list strong {
+  color: #ffffff !important;
+  display: block;
+  font-size: 0.84rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.25rem;
+  text-align: left;
+}
+
+.site-footer .footer-contact-list a {
+  color: #67e8f9;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+  display: inline-block;
+  text-align: left;
+}
+
+.site-footer .footer-contact-list a:hover {
+  color: #ffffff;
+}
+
+.site-footer .footer-bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .site-footer .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .site-footer .footer-bottom {
+    flex-direction: column;
+    text-align: center;
   }
 }
