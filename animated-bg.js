@@ -41,17 +41,17 @@ const colorSchemes = {
     lineColor: 'rgba(124, 58, 237, 0.3)'
   },
   'products': {
-    name: 'Coral Reef',
-    bgGradient: ['#fed7aa', '#c7d2fe', '#fff7ed'],
-    primary: '#dc2626',
-    secondary: '#b91c1c',
-    accent: '#0891b2',
+    name: 'Solar Yellow',
+    bgGradient: ['#fefce8', '#fef9c3', '#fffbeb'],
+    primary: '#b45309',
+    secondary: '#efc900',
+    accent: '#efc900',
     cardBg: '#ffffff',
-    cardText: '#7c2d12',
-    buttonBg: '#dc2626',
-    buttonText: '#ffffff',
-    particleColor: 'rgba(220, 38, 38, 0.5)',
-    lineColor: 'rgba(185, 28, 28, 0.3)'
+    cardText: '#1f2937',
+    buttonBg: '#efc900',
+    buttonText: '#111827',
+    particleColor: 'rgba(239, 201, 0, 0.65)',
+    lineColor: 'rgba(217, 119, 6, 0.35)'
   },
   'tata': {
     name: 'Indigo Night',
@@ -68,16 +68,16 @@ const colorSchemes = {
   },
   'ht-lt': {
     name: 'Safety Red',
-    bgGradient: ['#fee2e2', '#dbeafe', '#fef2f2'],
+    bgGradient: ['#fff1f2', '#fee2e2', '#fff5f5'],
     primary: '#b91c1c',
     secondary: '#991b1b',
     accent: '#0284c7',
     cardBg: '#ffffff',
     cardText: '#5f1914',
-    buttonBg: '#b91c1c',
+    buttonBg: '#dc2626',
     buttonText: '#ffffff',
-    particleColor: 'rgba(185, 28, 28, 0.5)',
-    lineColor: 'rgba(153, 27, 27, 0.3)'
+    particleColor: 'rgba(239, 68, 68, 0.55)',
+    lineColor: 'rgba(220, 38, 38, 0.3)'
   },
   'industrial-wiring': {
     name: 'Steel Gray',
@@ -301,14 +301,28 @@ function applyColorScheme() {
     btn.style.color = scheme.buttonText;
   });
 
-  // Update text colors
+  // Update text colors (excluding footer)
   document.querySelectorAll('h1, h2, h3').forEach(heading => {
-    heading.style.color = scheme.primary;
+    if (!heading.closest('footer')) {
+      heading.style.color = scheme.primary;
+    }
   });
 
   // Apply to header
   document.querySelector('header').style.backgroundColor = `rgba(255, 255, 255, 0.95)`;
-  document.querySelector('header').style.borderBottomColor = scheme.primary;
+  document.querySelector('header').style.borderBottomColor = pageName === 'products' ? '#efc900' : scheme.primary;
+
+  // Products page specific styling
+  if (pageName === 'products') {
+    const heroHeading = document.querySelector('.page-hero.products h1');
+    if (heroHeading) {
+      heroHeading.style.color = '#111827';
+    }
+    const heroText = document.querySelector('.page-hero.products p');
+    if (heroText) {
+      heroText.style.color = '#1f2937';
+    }
+  }
 
   // Solar page specific styling
   if (pageName === 'solar') {
